@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1477abde2bf42724dac55c02f6be2784
+guid: 4604ce5a6f1ab654e8f7b09b7800175d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4534792943827523529
-    second: Hockey_1_0
+      213: 1506512001392234847
+    second: pause_button_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hockey_1_0
+      name: pause_button_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 280
         y: 0
-        width: 114
-        height: 120
+        width: 720
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 738663d08dd2111c0800000000000000
-      internalID: -4534792943827523529
+      spriteID: f51d8d4fea438e410800000000000000
+      internalID: 1506512001392234847
       vertices: []
       indices: 
       edges: []

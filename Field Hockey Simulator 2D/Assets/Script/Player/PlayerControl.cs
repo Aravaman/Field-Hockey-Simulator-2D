@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float moveInputVer;
-    public float moveInputHor;
     public float speed;
 
     public Joystick joystick;
@@ -14,11 +12,14 @@ public class PlayerControl : MonoBehaviour
     private Vector2 moveVelocity;
 
     public Joystick joystickHit;
+    private Vector2 moveVelocityHit;
     public bool hold;
     public float distance = 0.2f;
     RaycastHit2D hit;
     public Transform holdPoint;
     public float throwObject = 5;
+
+    public float offset;
 
     private bool facingRight = true;
 
@@ -34,9 +35,8 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        moveInputVer = joystick.Vertical;
-        moveInputHor = joystick.Horizontal;
-        moveVelocity = new Vector2(moveInputHor * speed, moveInputVer * speed);
+        moveVelocity = new Vector2(joystick.Horizontal * speed, joystick.Vertical * speed); // ƒвижение
+        moveVelocityHit = new Vector2(joystick.Horizontal, joystick.Vertical); // ”дар
 
         if (hold) //“ут м€ч встаЄт на своЄ место
         {
@@ -47,11 +47,11 @@ public class PlayerControl : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveVelocity * Time.deltaTime);
-        if(facingRight == false && moveInputHor > 0)
+        if(facingRight == false && moveVelocity.x > 0)
         {
             Flip();
         }
-        else if (facingRight == true && moveInputHor < 0)
+        else if (facingRight == true && moveVelocity.x < 0)
         {
             Flip();
         }
@@ -77,7 +77,21 @@ public class PlayerControl : MonoBehaviour
             hold = false;
             if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(joystickHit.Vertical, joystickHit.Horizontal) * throwObject;
+                hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity += moveVelocityHit * throwObject;
+            }
+        }
+    }
+
+    public void OnClicTheDirectionOfTheBallImpact() //Ќапровление удара м€чом
+    {
+        if (hold)
+        {
+            hold = false;
+            if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+            {
+                Vector3 difference = Camera.main.ScreenToWorldPoint(moveVelocityHit) - transform.position;
+                float ratateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, ratateZ + offset);
             }
         }
     }
