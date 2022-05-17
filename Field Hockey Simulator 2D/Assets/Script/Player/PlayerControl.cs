@@ -82,21 +82,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    public void OnClicTheDirectionOfTheBallImpact() //Напровление удара мячом
-    {
-        if (hold)
-        {
-            hold = false;
-            if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
-            {
-                Vector3 difference = Camera.main.ScreenToWorldPoint(moveVelocityHit) - transform.position;
-                float ratateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0f, 0f, ratateZ + offset);
-            }
-        }
-    }
-
-    private void Flip() //Для пофорота
+    private void Flip() //Для поворота
     {
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
