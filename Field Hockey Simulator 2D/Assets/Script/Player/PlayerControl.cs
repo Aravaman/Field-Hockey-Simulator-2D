@@ -36,7 +36,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         moveVelocity = new Vector2(joystick.Horizontal * speed, joystick.Vertical * speed); // ƒвижение
-        moveVelocityHit = new Vector2(joystick.Horizontal, joystick.Vertical); // ”дар
+        moveVelocityHit = new Vector2(joystickHit.Horizontal, joystickHit.Vertical); // ”дар
 
         if (hold) //“ут м€ч встаЄт на своЄ место
         {
@@ -77,7 +77,7 @@ public class PlayerControl : MonoBehaviour
             hold = false;
             if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity += moveVelocityHit * throwObject;
+                hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = moveVelocityHit * throwObject;
             }
         }
     }

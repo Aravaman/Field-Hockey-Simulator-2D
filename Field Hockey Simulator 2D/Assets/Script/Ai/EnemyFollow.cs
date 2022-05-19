@@ -16,6 +16,8 @@ public class EnemyFollow : MonoBehaviour
     public Transform holdPoint;
     public float throwObject = 5;
 
+    PlayerControl plyerInteraction;
+
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<Transform>();

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ball
   - Gates
+  - AI
+  - GoalkeeperOur
+  - GoalkeeperTheir
   layers:
   - Default
   - TransparentFX
