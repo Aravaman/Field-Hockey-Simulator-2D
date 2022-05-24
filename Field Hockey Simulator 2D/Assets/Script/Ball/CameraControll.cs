@@ -18,7 +18,7 @@ public class CameraControll : MonoBehaviour
 
     public void FindPlayer(bool payerIsLeft)
     {
-        ball = GameObject.FindGameObjectWithTag("Ball").transform;
+        ball = GameObject.FindGameObjectWithTag("Player").transform;
         lastX = Mathf.RoundToInt(ball.position.x);
         if (payerIsLeft)
         {

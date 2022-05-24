@@ -10,30 +10,24 @@ public class Gool : MonoBehaviour
     public TextMeshProUGUI textGetGates;
     public int countGetGates;
 
-    //private Transform ball;
-    //public Transform holdPointBall;
+    public GameObject ball;
+    public Transform spawnerBall;
 
-    //private Transform ai;
-    //public Transform holdPointAi;
+    public GameObject ai;
+    public Transform spawnerAi;
 
-    //private Transform player;
-    //public Transform holdPointPlayer;
+    public GameObject player;
+    public Transform spawnerPlayer;
 
-    //private Transform goalkeeperOur;
-    //public Transform holdPointGoalkeeperOur;
+    public GameObject goalkeeperOur;
+    public Transform spawnerGoalkeeperOur;
 
-    //private Transform goalkeeperTheir;
-    //public Transform holdPointGoalkeeperTheir;
+    public GameObject goalkeeperTheir;
+    public Transform spawnerGoalkeeperTheir;
 
     void Start()
     {
         textGetGates.text = countGetGates.ToString();
-
-        //ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<Transform>();
-        //ai = GameObject.FindGameObjectWithTag("AI").GetComponent<Transform>();
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        //goalkeeperOur = GameObject.FindGameObjectWithTag("GoalkeeperOur").GetComponent<Transform>();
-        //goalkeeperTheir = GameObject.FindGameObjectWithTag("GoalkeeperTheir").GetComponent<Transform>();
     }
 
     void Update()
@@ -46,11 +40,16 @@ public class Gool : MonoBehaviour
         if(collision.gameObject.tag == "Ball")
         {
             countGetGates += 1;
-            //ball.gameObject.transform.position = holdPointBall.gameObject.transform.position;
-            //ai.gameObject.transform.position = holdPointAi.gameObject.transform.position;
-            //player.gameObject.transform.position = holdPointPlayer.gameObject.transform.position;
-            //goalkeeperOur.gameObject.transform.position = holdPointGoalkeeperOur.gameObject.transform.position;
-            //goalkeeperTheir.gameObject.transform.position = holdPointGoalkeeperTheir.gameObject.transform.position;
+            //Destroy(collision.gameObject);
+            //Instantiate(ball, spawnerBall.position, transform.rotation);
+            //Destroy(ai.gameObject);
+            //Instantiate(ai, spawnerAi.position, transform.rotation);
+            //Destroy(player.);
+            //Instantiate(player, spawnerPlayer.position, transform.rotation);
+            //Destroy(goalkeeperOur.gameObject);
+            //Instantiate(goalkeeperOur, spawnerGoalkeeperOur.position, transform.rotation);
+            //Destroy(goalkeeperTheir.gameObject);
+            //Instantiate(goalkeeperTheir, spawnerGoalkeeperTheir.position, transform.rotation);
         }
     }
 }

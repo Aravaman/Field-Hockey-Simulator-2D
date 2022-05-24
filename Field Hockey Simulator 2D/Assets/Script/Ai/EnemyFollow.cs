@@ -8,15 +8,13 @@ public class EnemyFollow : MonoBehaviour
     private Transform ball;
     private Transform gates;
 
-    private bool facingRight = true;
-
     public bool hold;
     public float distance = 0.2f;
     RaycastHit2D hit;
     public Transform holdPoint;
     public float throwObject = 5;
 
-    PlayerControl plyerInteraction;
+    private bool facingRight = true;
 
     void Start()
     {
@@ -67,13 +65,17 @@ public class EnemyFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (ball.transform.position.x > transform.position.x) //facingRight == false && 
+        if (facingRight == false && ball.transform.position.x < transform.position.x) //facingRight == false && 
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+            Flip();
         }
-        else
+        else if(facingRight == true && ball.transform.position.x > transform.position.x)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            Flip();
+        }
+        if (hold && ball.transform.position.x > transform.position.x)
+        {
+            Flip();
         }
     }
 
