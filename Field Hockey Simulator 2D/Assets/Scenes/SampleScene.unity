@@ -128,7 +128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 362890584362370090, guid: 5d01134d3e33bbd4f978754329730622, type: 3}
   m_PrefabInstance: {fileID: 362890584374524308}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1319216742}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c62d2c086a76b5d40bfd645224a0cf10, type: 3}
@@ -1378,6 +1378,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251952666}
   m_CullTransparentMesh: 1
+--- !u!1 &256986875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8217686626003131492, guid: a182898d4c02ff7498e5556ecabb4b0a, type: 3}
+  m_PrefabInstance: {fileID: 8217686623969703870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &268992318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,15 +1947,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textGetGates: {fileID: 1691554390}
   countGetGates: 0
-  ball: {fileID: 2157012446999285040, guid: 0d6a6050bc727f94b9e0b74d0f14729b, type: 3}
+  ball: {fileID: 543480295}
   spawnerBall: {fileID: 246112502}
-  ai: {fileID: 6309982939407186693, guid: afa230003b4580b4a90a54d858994efd, type: 3}
+  ai: {fileID: 620643015}
   spawnerAi: {fileID: 1029120643}
-  player: {fileID: 362890584362370094, guid: 5d01134d3e33bbd4f978754329730622, type: 3}
+  player: {fileID: 1319216742}
   spawnerPlayer: {fileID: 1307717824}
-  goalkeeperOur: {fileID: 8860327417814580975, guid: 42c62f3b6613bb743993406c50048566, type: 3}
+  goalkeeperOur: {fileID: 376629555}
   spawnerGoalkeeperOur: {fileID: 963811078}
-  goalkeeperTheir: {fileID: 8217686626003131492, guid: a182898d4c02ff7498e5556ecabb4b0a, type: 3}
+  goalkeeperTheir: {fileID: 256986875}
   spawnerGoalkeeperTheir: {fileID: 324793114}
 --- !u!1 &324793113
 GameObject:
@@ -2116,6 +2121,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328700187}
   m_CullTransparentMesh: 1
+--- !u!1 &376629555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8860327417814580975, guid: 42c62f3b6613bb743993406c50048566, type: 3}
+  m_PrefabInstance: {fileID: 8860327418206589156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &420480838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,7 +2247,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2325,54 +2334,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e8bed702008f0479fd7b98301dcf22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textGatesAnAlly: {fileID: 981967759}
-  textGatesTheOpponent: {fileID: 1691554390}
-  textTimer: {fileID: 2050293089}
-  win: {fileID: 251952666}
-  lose: {fileID: 1512694653}
-  nechya: {fileID: 1480915369}
---- !u!1 &539359974
+--- !u!1 &543480295 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2157012446999285040, guid: 0d6a6050bc727f94b9e0b74d0f14729b, type: 3}
+  m_PrefabInstance: {fileID: 2157012446934988082}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 539359975}
-  m_Layer: 3
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &539359975
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539359974}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.93, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 759113461}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &569195845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,6 +2417,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569195845}
   m_CullTransparentMesh: 1
+--- !u!1 &620643015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6309982939407186693, guid: afa230003b4580b4a90a54d858994efd, type: 3}
+  m_PrefabInstance: {fileID: 6309982939145768993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641772942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,15 +2729,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textGetGates: {fileID: 981967759}
   countGetGates: 0
-  ball: {fileID: 2157012446999285040, guid: 0d6a6050bc727f94b9e0b74d0f14729b, type: 3}
+  ball: {fileID: 543480295}
   spawnerBall: {fileID: 246112502}
-  ai: {fileID: 6309982939407186693, guid: afa230003b4580b4a90a54d858994efd, type: 3}
+  ai: {fileID: 620643015}
   spawnerAi: {fileID: 1029120643}
-  player: {fileID: 362890584362370094, guid: 5d01134d3e33bbd4f978754329730622, type: 3}
+  player: {fileID: 1319216742}
   spawnerPlayer: {fileID: 1307717824}
-  goalkeeperOur: {fileID: 8860327417814580975, guid: 42c62f3b6613bb743993406c50048566, type: 3}
+  goalkeeperOur: {fileID: 376629555}
   spawnerGoalkeeperOur: {fileID: 963811078}
-  goalkeeperTheir: {fileID: 8217686626003131492, guid: a182898d4c02ff7498e5556ecabb4b0a, type: 3}
+  goalkeeperTheir: {fileID: 256986875}
   spawnerGoalkeeperTheir: {fileID: 324793114}
 --- !u!61 &723603034
 BoxCollider2D:
@@ -2794,11 +2765,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!4 &759113461 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2157012446999285046, guid: 0d6a6050bc727f94b9e0b74d0f14729b, type: 3}
-  m_PrefabInstance: {fileID: 2157012446934988082}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &760839637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3954,6 +3920,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983078482}
   m_CullTransparentMesh: 1
+--- !u!4 &1005908757 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 362890584110791839, guid: 5d01134d3e33bbd4f978754329730622, type: 3}
+  m_PrefabInstance: {fileID: 362890584374524308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1006188814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3969,6 +3940,7 @@ GameObject:
   - component: {fileID: 1006188819}
   - component: {fileID: 1006188820}
   - component: {fileID: 1006188821}
+  - component: {fileID: 1006188822}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4107,6 +4079,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4965c3c839fa47447a5eec1114805524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1006188822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006188814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e8bed702008f0479fd7b98301dcf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textGatesAnAlly: {fileID: 981967759}
+  textGatesTheOpponent: {fileID: 1691554390}
+  textTimer: {fileID: 2050293089}
+  win: {fileID: 251952666}
+  lose: {fileID: 1512694653}
+  nechya: {fileID: 1480915369}
 --- !u!114 &1011499493 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
@@ -4603,18 +4593,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 12254654}
-          m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
-          m_MethodName: OnClicTheDirectionOfTheBallImpact
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1202756421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4858,6 +4836,11 @@ Transform:
   m_Father: {fileID: 1865479534}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1319216742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 362890584362370094, guid: 5d01134d3e33bbd4f978754329730622, type: 3}
+  m_PrefabInstance: {fileID: 362890584374524308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1365767070
 GameObject:
   m_ObjectHideFlags: 0
@@ -7144,7 +7127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf7fae2943fda648bf85363815adfad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 539359975}
+  Target: {fileID: 1005908757}
   PointerUI: {fileID: 827426635}
   PointerIcon: {fileID: 21300000, guid: ff7769a14dece8a4f8a7321bfbbd9ae4, type: 3}
   OutOfScreenIcon: {fileID: 21300000, guid: 0f7357205e7f64147bcf1eb1f6724b7d, type: 3}

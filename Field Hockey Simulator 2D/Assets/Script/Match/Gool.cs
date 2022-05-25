@@ -40,16 +40,16 @@ public class Gool : MonoBehaviour
         if(collision.gameObject.tag == "Ball")
         {
             countGetGates += 1;
-            //Destroy(collision.gameObject);
-            //Instantiate(ball, spawnerBall.position, transform.rotation);
-            //Destroy(ai.gameObject);
-            //Instantiate(ai, spawnerAi.position, transform.rotation);
-            //Destroy(player.);
-            //Instantiate(player, spawnerPlayer.position, transform.rotation);
-            //Destroy(goalkeeperOur.gameObject);
-            //Instantiate(goalkeeperOur, spawnerGoalkeeperOur.position, transform.rotation);
-            //Destroy(goalkeeperTheir.gameObject);
-            //Instantiate(goalkeeperTheir, spawnerGoalkeeperTheir.position, transform.rotation);
+            ball.transform.position = spawnerBall.position;
+            ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            ai.transform.position = spawnerAi.position;
+            ai.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            player.transform.position = spawnerPlayer.position;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            goalkeeperOur.transform.position = spawnerGoalkeeperOur.position;
+            goalkeeperOur.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            goalkeeperTheir.transform.position = spawnerGoalkeeperTheir.position;
+            goalkeeperTheir.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 }

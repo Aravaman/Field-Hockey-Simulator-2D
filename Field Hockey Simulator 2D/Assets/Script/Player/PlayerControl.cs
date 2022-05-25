@@ -7,11 +7,11 @@ public class PlayerControl : MonoBehaviour
 {
     public float speed;
 
-    public Joystick joystick;
+    private Joystick joystick;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
 
-    public Joystick joystickHit;
+    private Joystick joystickHit;
     private Vector2 moveVelocityHit;
     public bool hold;
     public float distance = 0.2f;
@@ -26,6 +26,8 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        joystick = FindObjectOfType<FloatingJoystick>();
+        joystickHit = FindObjectOfType<FixedJoystick>();
     }
 
     public void OnClick(int run) //Бег
