@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraControll : MonoBehaviour
 {
-    public float dumping = 1.5f;
-    public Vector2 offset = new Vector2(2f, 1f);
-    public bool isLeft;
+    [SerializeField] private float dumping = 1.5f;
+    Vector2 offset = new Vector2(0f, 0f);
+    private bool isLeft;
     private Transform ball;
     private int lastX;
 

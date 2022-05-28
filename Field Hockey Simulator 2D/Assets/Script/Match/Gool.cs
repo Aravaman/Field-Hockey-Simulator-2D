@@ -25,6 +25,8 @@ public class Gool : MonoBehaviour
     public GameObject goalkeeperTheir;
     public Transform spawnerGoalkeeperTheir;
 
+    [SerializeField] private Animation animationGoal;
+
     void Start()
     {
         textGetGates.text = countGetGates.ToString();
@@ -40,16 +42,33 @@ public class Gool : MonoBehaviour
         if(collision.gameObject.tag == "Ball")
         {
             countGetGates += 1;
-            ball.transform.position = spawnerBall.position;
-            ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            ai.transform.position = spawnerAi.position;
-            ai.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            player.transform.position = spawnerPlayer.position;
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            goalkeeperOur.transform.position = spawnerGoalkeeperOur.position;
-            goalkeeperOur.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            goalkeeperTheir.transform.position = spawnerGoalkeeperTheir.position;
-            goalkeeperTheir.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            animationGoal.Play();
+            ai.GetComponent<EnemyFollow>().Speed = 0;
+            StartCoroutine(RestartTime());
         }
+    }
+
+    IEnumerator RestartTime()
+    {
+        yield return new WaitForSeconds(3f);
+        ai.GetComponent<EnemyFollow>().Hold = false;
+        player.GetComponent<PlayerControl>().Hold = false;
+        RestartObject();
+        ai.GetComponent<EnemyFollow>().Speed = 4;
+    }
+
+    private void RestartObject()
+    {
+        RestartObject(ball, spawnerBall);
+        RestartObject(ai, spawnerAi);
+        RestartObject(player, spawnerPlayer);
+        RestartObject(goalkeeperOur, spawnerGoalkeeperOur);
+        RestartObject(goalkeeperTheir, spawnerGoalkeeperTheir);
+    }
+
+    private void RestartObject(GameObject gameObjectMatch, Transform spawner)
+    {
+        gameObjectMatch.transform.position = spawner.position;
+        gameObjectMatch.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 }

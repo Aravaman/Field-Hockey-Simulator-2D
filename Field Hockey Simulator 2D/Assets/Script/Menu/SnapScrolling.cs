@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SnapScrolling : MonoBehaviour
 {
-    public GameObject scrollBar;
+    public GameObject ScrollBar;
     float scrollPos = 0;
     float[] pos;
 
@@ -24,7 +24,7 @@ public class SnapScrolling : MonoBehaviour
         }
         if (Input.GetMouseButton(0))
         {
-            scrollPos = scrollBar.GetComponent<Scrollbar>().value;
+            scrollPos = ScrollBar.GetComponent<Scrollbar>().value;
         }
         else
         {
@@ -32,7 +32,7 @@ public class SnapScrolling : MonoBehaviour
             {
                 if (scrollPos < pos[i] + (distant / 2) && scrollPos > pos[i] - (distant / 2))
                 {
-                    scrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollBar.GetComponent<Scrollbar>().value, pos[i], 0.1f);
+                    ScrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(ScrollBar.GetComponent<Scrollbar>().value, pos[i], 0.1f);
                 }
             }
         }

@@ -4,35 +4,37 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
-    public float speed;
+    public float Speed = 4;
     private Transform ball;
     private Transform gates;
 
-    public bool hold;
+    public bool Hold;
     public float distance = 0.2f;
     RaycastHit2D hit;
     public Transform holdPoint;
     public float throwObject = 5;
 
     private bool facingRight = true;
+    GameObject player;
 
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<Transform>();
         gates = GameObject.FindGameObjectWithTag("Gates").GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        if (!hold)
+        if (!Hold)
         {
-            transform.position = Vector2.MoveTowards(transform.position, ball.position, speed * Time.deltaTime);
-        } else if (hold)
+            transform.position = Vector2.MoveTowards(transform.position, ball.position, Speed * Time.deltaTime);
+        } else if (Hold)
         {
-            transform.position = Vector2.MoveTowards(transform.position, gates.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, gates.position, Speed * Time.deltaTime);
         }
 
-        if (hold) //“ут м€ч встаЄт на своЄ место
+        if (Hold) //“ут м€ч встаЄт на своЄ место
         {
             hit.collider.gameObject.transform.position = holdPoint.position;
         }
@@ -40,22 +42,24 @@ public class EnemyFollow : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision) //ƒл€ подбора м€ча
     {
-        if (!hold)
+        if (!Hold)
         {
             Physics2D.queriesStartInColliders = false;
             hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
             if (hit.collider != null && hit.collider.tag == "Ball")
             {
-                hold = true;
+                Hold = true;
+                if (player.GetComponent <PlayerControl>().Hold == true)
+                    player.GetComponent<PlayerControl>().Hold = false;
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hold)
+        if (Hold)
         {
-            hold = false;
+            Hold = false;
             if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
                 hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gates.position.x, gates.position.y) * throwObject;
@@ -73,7 +77,7 @@ public class EnemyFollow : MonoBehaviour
         {
             Flip();
         }
-        if (hold && ball.transform.position.x > transform.position.x)
+        if (Hold && ball.transform.position.x > transform.position.x)
         {
             Flip();
         }

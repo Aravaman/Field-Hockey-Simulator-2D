@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
 
     private Joystick joystick;
     private Rigidbody2D rb;
@@ -13,13 +13,13 @@ public class PlayerControl : MonoBehaviour
 
     private Joystick joystickHit;
     private Vector2 moveVelocityHit;
-    public bool hold;
-    public float distance = 0.2f;
+    public bool Hold;
+    private float distance = 2f;
     RaycastHit2D hit;
-    public Transform holdPoint;
-    public float throwObject = 5;
+    [SerializeField] private Transform holdPoint;
+    [SerializeField] private float throwObject = 5;
 
-    public float offset;
+    GameObject ai;
 
     private bool facingRight = true;
 
@@ -28,6 +28,7 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         joystick = FindObjectOfType<FloatingJoystick>();
         joystickHit = FindObjectOfType<FixedJoystick>();
+        ai = GameObject.FindGameObjectWithTag("AI");
     }
 
     public void OnClick(int run) //Ѕег
@@ -40,7 +41,7 @@ public class PlayerControl : MonoBehaviour
         moveVelocity = new Vector2(joystick.Horizontal * speed, joystick.Vertical * speed); // ƒвижение
         moveVelocityHit = new Vector2(joystickHit.Horizontal, joystickHit.Vertical); // ”дар
 
-        if (hold) //“ут м€ч встаЄт на своЄ место
+        if (Hold) //“ут м€ч встаЄт на своЄ место
         {
             hit.collider.gameObject.transform.position = holdPoint.position;
         }
@@ -61,22 +62,24 @@ public class PlayerControl : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision) //ƒл€ подбора м€ча
     {
-        if (!hold)
+        if (!Hold)
         {
             Physics2D.queriesStartInColliders = false;
             hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
             if (hit.collider != null && hit.collider.tag == "Ball")
             {
-                hold = true;
+                Hold = true;
+                if(ai.GetComponent<EnemyFollow>().Hold == true)
+                    ai.GetComponent<EnemyFollow>().Hold = false;
             }
         }
     }
 
     public void OnclicHit() //”дар м€чом
     {
-        if (hold)
+        if (Hold)
         {
-            hold = false;
+            Hold = false;
             if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
                 hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = moveVelocityHit * throwObject;

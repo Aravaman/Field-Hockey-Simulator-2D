@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoalkeeperMove : MonoBehaviour
 {
     private Transform ball;
-    public float speed;
+    [SerializeField] private float speed;
     private Rigidbody2D rb;
 
     void Start()

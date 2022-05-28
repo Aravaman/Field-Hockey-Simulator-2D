@@ -16,10 +16,19 @@ public class MatchRules : MonoBehaviour
     public GameObject lose;
     public GameObject nechya;
 
+    [SerializeField] GameObject training;
+
     // Start is called before the first frame update
     void Start()
     {
+        training.SetActive(true);
+        Time.timeScale = 0;
+    }
 
+    public void PlayMath()
+    {
+        training.SetActive(false);
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
