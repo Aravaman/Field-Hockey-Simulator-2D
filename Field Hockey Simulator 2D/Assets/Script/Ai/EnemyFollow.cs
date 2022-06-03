@@ -17,6 +17,8 @@ public class EnemyFollow : MonoBehaviour
     private bool facingRight = true;
     GameObject player;
 
+    public AudioSource Hit;
+
     void Start()
     {
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<Transform>();
@@ -37,6 +39,7 @@ public class EnemyFollow : MonoBehaviour
         if (Hold) //“ут м€ч встаЄт на своЄ место
         {
             hit.collider.gameObject.transform.position = holdPoint.position;
+            Hit.Play();
         }
     }
 

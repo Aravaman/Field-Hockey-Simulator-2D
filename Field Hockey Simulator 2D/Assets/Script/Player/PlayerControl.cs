@@ -19,6 +19,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Transform holdPoint;
     [SerializeField] private float throwObject = 5;
 
+    public AudioSource Hit;
+    public AudioSource Run;
+
     GameObject ai;
 
     private bool facingRight = true;
@@ -34,6 +37,7 @@ public class PlayerControl : MonoBehaviour
     public void OnClick(int run) //Ѕег
     {
         speed = run;
+        Run.Play();
     }
 
     void Update()
@@ -44,6 +48,7 @@ public class PlayerControl : MonoBehaviour
         if (Hold) //“ут м€ч встаЄт на своЄ место
         {
             hit.collider.gameObject.transform.position = holdPoint.position;
+            Hit.Play();
         }
     }
 

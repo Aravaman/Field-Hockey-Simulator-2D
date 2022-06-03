@@ -25,11 +25,15 @@ public class Gool : MonoBehaviour
     public GameObject goalkeeperTheir;
     public Transform spawnerGoalkeeperTheir;
 
+    public AudioSource Whistle;
+    public AudioSource SoundGoal;
+
     [SerializeField] private Animation animationGoal;
 
     void Start()
     {
         textGetGates.text = countGetGates.ToString();
+        Whistle.Play();
     }
 
     void Update()
@@ -44,6 +48,8 @@ public class Gool : MonoBehaviour
             countGetGates += 1;
             animationGoal.Play();
             ai.GetComponent<EnemyFollow>().Speed = 0;
+            Whistle.Play();
+            SoundGoal.Play();
             StartCoroutine(RestartTime());
         }
     }
@@ -54,6 +60,7 @@ public class Gool : MonoBehaviour
         ai.GetComponent<EnemyFollow>().Hold = false;
         player.GetComponent<PlayerControl>().Hold = false;
         RestartObject();
+        SoundGoal.Stop();
         ai.GetComponent<EnemyFollow>().Speed = 4;
     }
 
@@ -64,6 +71,7 @@ public class Gool : MonoBehaviour
         RestartObject(player, spawnerPlayer);
         RestartObject(goalkeeperOur, spawnerGoalkeeperOur);
         RestartObject(goalkeeperTheir, spawnerGoalkeeperTheir);
+        Whistle.Play();
     }
 
     private void RestartObject(GameObject gameObjectMatch, Transform spawner)
