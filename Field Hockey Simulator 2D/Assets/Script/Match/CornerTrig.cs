@@ -1,15 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class Gool : MonoBehaviour
+public class CornerTrig : MonoBehaviour
 {
-    public TextMeshProUGUI textGetGates;
-    public int countGetGates;
-
     public GameObject ball;
     public Transform spawnerBall;
 
@@ -26,42 +20,13 @@ public class Gool : MonoBehaviour
     public Transform spawnerGoalkeeperTheir;
 
     public AudioSource Whistle;
-    public AudioSource SoundGoal;
-
-    [SerializeField] private Animation animationGoal;
-
-    void Start()
-    {
-        textGetGates.text = countGetGates.ToString();
-        Whistle.Play();
-    }
-
-    void Update()
-    {
-        textGetGates.text = countGetGates.ToString();
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ball")
+        if(collision.tag == "Ball")
         {
-            countGetGates += 1;
-            animationGoal.Play();
-            ai.GetComponent<EnemyFollow>().Speed = 0;
-            Whistle.Play();
-            SoundGoal.Play();
-            StartCoroutine(RestartTime());
+            RestartObject();
         }
-    }
-
-    IEnumerator RestartTime()
-    {
-        yield return new WaitForSeconds(3f);
-        ai.GetComponent<EnemyFollow>().Hold = false;
-        player.GetComponent<PlayerControl>().Hold = false;
-        RestartObject();
-        SoundGoal.Stop();
-        ai.GetComponent<EnemyFollow>().Speed = 4;
     }
 
     public void RestartObject()

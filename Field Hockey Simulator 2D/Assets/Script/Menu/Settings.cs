@@ -6,22 +6,38 @@ using UnityEngine.Audio;
 public class Settings : MonoBehaviour
 {
     public AudioMixerGroup Mixer;
+    private bool volumeMusic = false;
+    private bool volumeEffects = false;
 
-    public void ToggMusicVolume(bool volume)
+    public void ToggMusicVolume()
     {
-        if (volume)
+        if (volumeMusic)
+        {
             Mixer.audioMixer.SetFloat("MusicVolume", 0);
+            volumeMusic = false;
+        }
         else
         {
-            Mixer.audioMixer.SetFloat("MusicVolume", -20);
+            Mixer.audioMixer.SetFloat("MusicVolume", -80);
+            volumeMusic = true;
         }
+
+        PlayerPrefs.SetInt("MusicVolume", volumeMusic ? 1 : 0);
     }
 
-    public void ToggEffectsVolume(bool volume)
+    public void ToggEffectsVolume()   
     {
-        if (volume)
+        if (volumeEffects)
+        {
             Mixer.audioMixer.SetFloat("EffectsVolume", 0);
+            volumeEffects = false;
+        }
         else
-            Mixer.audioMixer.SetFloat("EffectsVolume", -10);
+        {
+            Mixer.audioMixer.SetFloat("EffectsVolume", -80);
+            volumeEffects = true;
+        }
+
+        PlayerPrefs.SetInt("MusicVolume", volumeEffects ? 1 : 0);
     }
 }
