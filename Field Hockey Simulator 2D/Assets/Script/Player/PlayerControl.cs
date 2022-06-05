@@ -22,12 +22,15 @@ public class PlayerControl : MonoBehaviour
     public AudioSource Hit;
     public AudioSource Run;
 
+    private Animator anim;
+
     GameObject ai;
 
     private bool facingRight = true;
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         joystick = FindObjectOfType<FloatingJoystick>();
         joystickHit = FindObjectOfType<FixedJoystick>();
@@ -62,6 +65,15 @@ public class PlayerControl : MonoBehaviour
         else if (facingRight == true && moveVelocity.x < 0)
         {
             Flip();
+        }
+
+        if(moveVelocity == new Vector2(0, 0))
+        {
+            anim.SetBool("isRuning", false);
+        }
+        else
+        {
+            anim.SetBool("isRuning", true);
         }
     }
 

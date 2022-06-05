@@ -17,10 +17,13 @@ public class EnemyFollow : MonoBehaviour
     private bool facingRight = true;
     GameObject player;
 
+    private Animator anim;
+
     public AudioSource Hit;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<Transform>();
         gates = GameObject.FindGameObjectWithTag("Gates").GetComponent<Transform>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -83,6 +86,15 @@ public class EnemyFollow : MonoBehaviour
         if (Hold && ball.transform.position.x > transform.position.x)
         {
             Flip();
+        }
+
+        if (transform.position == new Vector3(0, 0, 0))
+        {
+            anim.SetBool("isRuning", false);
+        }
+        else
+        {
+            anim.SetBool("isRuning", true);
         }
     }
 
