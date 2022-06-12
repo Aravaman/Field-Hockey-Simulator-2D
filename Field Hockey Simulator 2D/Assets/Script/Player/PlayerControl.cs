@@ -28,6 +28,8 @@ public class PlayerControl : MonoBehaviour
 
     private bool facingRight = true;
 
+    private BoxCollider2D col;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -35,6 +37,7 @@ public class PlayerControl : MonoBehaviour
         joystick = FindObjectOfType<FloatingJoystick>();
         joystickHit = FindObjectOfType<FixedJoystick>();
         ai = GameObject.FindGameObjectWithTag("AI");
+        col = GetComponent<BoxCollider2D>();
     }
 
     public void OnClick(int run) //Бег
@@ -82,7 +85,7 @@ public class PlayerControl : MonoBehaviour
         if (!Hold)
         {
             Physics2D.queriesStartInColliders = false;
-            hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+            hit = Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, Vector2.right * transform.localScale, distance);
             if (hit.collider != null && hit.collider.tag == "Ball")
             {
                 Hold = true;
@@ -110,11 +113,5 @@ public class PlayerControl : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
-    }
-
-    private void OnDrawGizmos() //Зона подбора мяча
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x * distance);
     }
 }

@@ -21,12 +21,15 @@ public class EnemyFollow : MonoBehaviour
 
     public AudioSource Hit;
 
+    private BoxCollider2D col;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         ball = GameObject.FindGameObjectWithTag("Ball").GetComponent<Transform>();
         gates = GameObject.FindGameObjectWithTag("Gates").GetComponent<Transform>();
         player = GameObject.FindGameObjectWithTag("Player");
+        col = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -51,7 +54,7 @@ public class EnemyFollow : MonoBehaviour
         if (!Hold)
         {
             Physics2D.queriesStartInColliders = false;
-            hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+            hit = Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, Vector2.left * transform.localScale, distance);
             if (hit.collider != null && hit.collider.tag == "Ball")
             {
                 Hold = true;
@@ -104,11 +107,5 @@ public class EnemyFollow : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
-    }
-
-    private void OnDrawGizmos() //«она подбора м€ча
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x * distance);
     }
 }
