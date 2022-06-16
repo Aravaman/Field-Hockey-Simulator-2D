@@ -54,7 +54,7 @@ public class EnemyFollow : MonoBehaviour
         if (!Hold)
         {
             Physics2D.queriesStartInColliders = false;
-            hit = Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, Vector2.left * transform.localScale, distance);
+            hit = Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, Vector2.left * transform.localScale.x, distance);
             if (hit.collider != null && hit.collider.tag == "Ball")
             {
                 Hold = true;

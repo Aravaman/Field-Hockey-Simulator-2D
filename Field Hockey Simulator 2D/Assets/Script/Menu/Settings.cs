@@ -13,7 +13,7 @@ public class Settings : MonoBehaviour
     {
         if (volumeMusic)
         {
-            Mixer.audioMixer.SetFloat("MusicVolume", 0);
+            Mixer.audioMixer.SetFloat("MusicVolume", -10);
             volumeMusic = false;
         }
         else
